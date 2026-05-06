@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Falabella AI — Página 2</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green: #00A651;
+    --green-dark: #007A3C;
+    --green-light: #E6F7EE;
+    --red: #E8192C;
+    --red-light: #FDECEA;
+    --dark: #0D1B0F;
+    --mid: #2A3D2E;
+    --text: #1C2B1E;
+    --muted: #5A6E5C;
+    --white: #FAFFFE;
+    --cream: #F5FBF7;
+    --border: #C8E6D1;
+    --accent: #FFD700;
+    --blue: #1A73E8;
+    --blue-light: #E8F0FD;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    width: 900px;
+    margin: 0 auto;
+    color: var(--text);
+  }
+
+  .page {
+    width: 900px;
+    min-height: 1273px;
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ─── HEADER STRIP ─── */
+  .header-strip {
+    background: var(--dark);
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .strip-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .strip-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+  .strip-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--green);
+    text-transform: uppercase;
+  }
+  .strip-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--white);
+  }
+  .strip-title span { color: var(--green); }
+  .page-badge {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 5px 12px;
+    border-radius: 20px;
+  }
+
+  /* ─── BODY ─── */
+  .body { padding: 28px 48px 32px; }
+
+  /* ─── SECTION TITLE ─── */
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--green-dark);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title::before {
+    content: '';
+    width: 20px; height: 2px;
+    background: var(--green);
+  }
+
+  .divider { height: 1px; background: var(--border); margin: 20px 0; }
+
+  /* ─── UX JOURNEY ─── */
+  .ux-journey {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .ux-phase {
+    padding: 16px 18px;
+    border-right: 1px solid var(--border);
+    position: relative;
+  }
+  .ux-phase:last-child { border-right: none; }
+
+  .ux-phase-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .ux-phase-icon {
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .phase-before .ux-phase-icon { background: #FFF3CD; }
+  .phase-during .ux-phase-icon { background: var(--green-light); }
+  .phase-after  .ux-phase-icon { background: var(--blue-light); }
+
+  .ux-phase-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .phase-before .ux-phase-name  { color: #7A5A00; }
+  .phase-during .ux-phase-name  { color: var(--green-dark); }
+  .phase-after  .ux-phase-name  { color: var(--blue); }
+
+  .ux-items { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+  .ux-items li {
+    font-size: 11px;
+    color: var(--text);
+    line-height: 1.4;
+    padding-left: 14px;
+    position: relative;
+    font-weight: 400;
+  }
+  .ux-items li::before {
+    content: '✓';
+    position: absolute; left: 0;
+    font-size: 10px; font-weight: 700;
+  }
+  .phase-before  .ux-items li::before { color: #E6A800; }
+  .phase-during  .ux-items li::before { color: var(--green); }
+  .phase-after   .ux-items li::before { color: var(--blue); }
+
+  /* ─── OMNICHANNEL ─── */
+  .omni-container {
+    background: var(--dark);
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .omni-container::before {
+    content: '';
+    position: absolute;
+    top: -50px; right: -50px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,166,81,0.2) 0%, transparent 70%);
+  }
+
+  .omni-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .omni-title::before { content: ''; width: 20px; height: 2px; background: var(--green); }
+
+  .omni-channels {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .channel-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 14px;
+    text-align: center;
+  }
+  .channel-icon { font-size: 22px; margin-bottom: 7px; }
+  .channel-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .channel-items { list-style: none; }
+  .channel-items li {
+    font-size: 10px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .omni-bridge {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+  .bridge-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .bridge-icon-wrap {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    background: rgba(0,166,81,0.15);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .bridge-text {
+    font-size: 10.5px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.35;
+    font-weight: 300;
+  }
+  .bridge-text strong { color: var(--green); font-weight: 600; display: block; font-size: 11px; }
+
+  /* ─── ANTOFAGASTA PILL ─── */
+  .regional-note {
+    background: linear-gradient(135deg, #E6F7EE, #F0FFF5);
+    border: 1.5px solid var(--green);
+    border-radius: 10px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+  .regional-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+  .regional-content {}
+  .regional-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--green-dark);
+    margin-bottom: 3px;
+  }
+  .regional-text {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.45;
+    font-weight: 300;
+  }
+
+  /* ─── RESULTS ─── */
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+
+  .result-card {
+    border-radius: 10px;
+    padding: 14px;
+    text-align: center;
+  }
+  .result-card.green { background: var(--green-light); border: 1.5px solid #A8DFC0; }
+  .result-card.gold  { background: #FFF9E6; border: 1.5px solid #FFD700; }
+  .result-card.blue  { background: var(--blue-light); border: 1.5px solid #90BBF7; }
+  .result-card.dark  { background: var(--dark); border: 1.5px solid #2A3D2E; }
+
+  .result-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .result-card.green .result-num { color: var(--green-dark); }
+  .result-card.gold  .result-num { color: #7A5A00; }
+  .result-card.blue  .result-num { color: var(--blue); }
+  .result-card.dark  .result-num { color: var(--accent); }
+
+  .result-label {
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1.4;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .result-card.green .result-label { color: var(--green-dark); }
+  .result-card.gold  .result-label { color: #7A5A00; }
+  .result-card.blue  .result-label { color: var(--blue); }
+  .result-card.dark  .result-label { color: rgba(255,255,255,0.5); }
+
+  /* ─── QUOTE ─── */
+  .quote-block {
+    margin-top: 18px;
+    background: var(--cream);
+    border-left: 4px solid var(--green);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+  }
+  .quote-text {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--muted);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+  .quote-text strong { color: var(--dark); font-weight: 600; font-style: normal; }
+  .quote-attr {
+    margin-top: 8px;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--green-dark);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--dark);
+    padding: 14px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 28px;
+  }
+  .footer-left {
+    font-size: 10px;
+    color: rgba(255,255,255,0.35);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+  }
+  .footer-center {
+    display: flex; gap: 6px;
+  }
+  .footer-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    opacity: 0.4;
+  }
+  .footer-dot.active {
+    opacity: 1;
+    width: 18px;
+    border-radius: 3px;
+  }
+  .footer-right {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER STRIP -->
+  <div class="header-strip">
+    <div class="strip-left">
+      <div class="strip-dot"></div>
+      <span class="strip-label">Solución completa</span>
+    </div>
+    <span class="strip-title">UX · <span>Omnicanal</span> · Resultados Esperados</span>
+    <span class="page-badge">02 / 02</span>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- UX JOURNEY -->
+    <div class="section-title">Mejora de Experiencia de Usuario (UX) · Ciclo de Compra</div>
+    <div class="ux-journey">
+      <div class="ux-phase phase-before">
+        <div class="ux-phase-header">
+          <div class="ux-phase-icon">🔎</div>
+          <div>
+            <div class="ux-phase-name">Antes de Comprar</div>
+          </div>
+        </div>
+        <ul class="ux-items">
+          <li>Buscador predictivo con filtros visibles desde el primer resultado</li>
+          <li>Página de categoría con imágenes claras y sin jerga técnica</li>
+          <li>Indicador de stock en tienda por región (incluye Antofagasta)</li>
+          <li>Precio final visible sin necesidad de avanzar al carrito</li>
+          <li>Comparador de productos lado a lado</li>
+        </ul>
+      </div>
+      <div class="ux-phase phase-during">
+        <div class="ux-phase-header">
+          <div class="ux-phase-icon">💳</div>
+          <div>
+            <div class="ux-phase-name">Durante la Compra</div>
+          </div>
+        </div>
+        <ul class="ux-items">
+          <li>Checkout en máximo 3 pasos visibles con barra de progreso</li>
+          <li>Compra como invitado sin obligar a crear cuenta</li>
+          <li>Costo de despacho visible desde el inicio, no al final</li>
+          <li>Fecha de entrega estimada clara y comprometida</li>
+          <li>Retiro en tienda como opción destacada</li>
+        </ul>
+      </div>
+      <div class="ux-phase phase-after">
+        <div class="ux-phase-header">
+          <div class="ux-phase-icon">📦</div>
+          <div>
+            <div class="ux-phase-name">Después de Comprar</div>
+          </div>
+        </div>
+        <ul class="ux-items">
+          <li>Seguimiento de pedido en tiempo real, unificado en web y app</li>
+          <li>Sección "Mis Pedidos" accesible desde el inicio de la app</li>
+          <li>Proceso de cambio/devolución en lenguaje simple, sin pasos ocultos</li>
+          <li>Canal de soporte visible y consistente en todos los canales</li>
+          <li>Notificaciones push con estado real del despacho</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- OMNICHANNEL -->
+    <div class="omni-container">
+      <div class="omni-title">Integración Omnicanal · Un solo Falabella para el cliente</div>
+      <div class="omni-channels">
+        <div class="channel-card">
+          <div class="channel-icon">🖥️</div>
+          <div class="channel-name">Sitio Web</div>
+          <ul class="channel-items">
+            <li>Navegación restructurada</li>
+            <li>Buscador inteligente</li>
+            <li>Stock real sincronizado</li>
+            <li>Precios unificados</li>
+          </ul>
+        </div>
+        <div class="channel-card">
+          <div class="channel-icon">📱</div>
+          <div class="channel-name">App Móvil</div>
+          <ul class="channel-items">
+            <li>Modo simplificado +40 años</li>
+            <li>Botones accesibles y grandes</li>
+            <li>Menú reducido y claro</li>
+            <li>Retiro en tienda destacado</li>
+          </ul>
+        </div>
+        <div class="channel-card">
+          <div class="channel-icon">🏪</div>
+          <div class="channel-name">Tienda Física</div>
+          <ul class="channel-items">
+            <li>Stock reflejado en tiempo real</li>
+            <li>QR para consultar web desde tienda</li>
+            <li>Mismo precio garantizado</li>
+            <li>Devoluciones con mismo proceso</li>
+          </ul>
+        </div>
+      </div>
+      <div class="omni-bridge">
+        <div class="bridge-item">
+          <div class="bridge-icon-wrap">🔁</div>
+          <div class="bridge-text"><strong>Stock unificado</strong>Mismo inventario en todos los canales en tiempo real</div>
+        </div>
+        <div class="bridge-item">
+          <div class="bridge-icon-wrap">💰</div>
+          <div class="bridge-text"><strong>Precio único</strong>La misma oferta en web, app y tienda sin excepciones</div>
+        </div>
+        <div class="bridge-item">
+          <div class="bridge-icon-wrap">🔄</div>
+          <div class="bridge-text"><strong>Devolución fácil</strong>Comprar online, devolver en tienda sin formularios complejos</div>
+        </div>
+        <div class="bridge-item">
+          <div class="bridge-icon-wrap">📍</div>
+          <div class="bridge-text"><strong>Click &amp; Collect</strong>Comprar en web, retirar en sucursal más cercana</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REGIONAL NOTE -->
+    <div class="regional-note">
+      <div class="regional-icon">📍</div>
+      <div class="regional-content">
+        <div class="regional-title">Foco regional · Antofagasta y ciudades alejadas</div>
+        <div class="regional-text">Implementar <strong>verificación de stock en tienda por ciudad</strong> antes del viaje del cliente. Mostrar "Disponible en tienda Antofagasta" con actualización en tiempo real, evitando traslados innecesarios. Destacar opción <strong>despacho express a regiones</strong> y <strong>retiro garantizado</strong> como alternativa confiable.</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- RESULTS -->
+    <div class="section-title">Resultados Esperados · Impacto Financiero y Reputacional</div>
+    <div class="results-grid">
+      <div class="result-card green">
+        <div class="result-num">+10%</div>
+        <div class="result-label">Conversión digital estimada</div>
+      </div>
+      <div class="result-card gold">
+        <div class="result-num">↓ 35%</div>
+        <div class="result-label">Abandono de carrito proyectado</div>
+      </div>
+      <div class="result-card blue">
+        <div class="result-num">↑ NPS</div>
+        <div class="result-label">Satisfacción cliente omnicanal</div>
+      </div>
+      <div class="result-card dark">
+        <div class="result-num">↓ Costos</div>
+        <div class="result-label">Call center y devoluciones</div>
+      </div>
+    </div>
+
+    <!-- QUOTE -->
+    <div class="quote-block">
+      <div class="quote-text">"No necesitamos una web más bonita. Necesitamos una experiencia <strong>más simple, lógica y confiable</strong> para el cliente."</div>
+      <div class="quote-attr">— Gerente General, Falabella · Reunión Extraordinaria</div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span class="footer-left">Consultoría Arquitectura de la Información · UCN Antofagasta · 2025</span>
+    <div class="footer-center">
+      <div class="footer-dot"></div>
+      <div class="footer-dot active"></div>
+    </div>
+    <span class="footer-right">Fin del Afiche</span>
+  </div>
+
+</div>
+</body>
+</html>
